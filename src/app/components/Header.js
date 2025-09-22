@@ -85,7 +85,9 @@ const navLinks = [
       { title: "Admission Process", href: "/admission/admission-process" },
       { title: "Eligibility Criteria", href: "/admission/eligibility" },
       { title: "Fee Structure", href: "/admission/fees-structure" },
-      { title: "Management Admission Quota", href: "" },
+      { title: "Management Admission Quota",href: "/pdfs/ManagementQuotaAdmission.pdf"
+}
+
     ],
   },
   {
@@ -891,7 +893,7 @@ export const Header = () => {
                           </div>
                         </motion.li>
 
-                        {/* Management Quota Admissions */}
+                        
                        {/* Management Quota Admissions */}
                         <motion.li
                           variants={itemVariants}
