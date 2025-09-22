@@ -5,7 +5,6 @@ import { motion, useMotionValue, useAnimationFrame } from "framer-motion";
 
 const items = [
   { id: 1, url: "/HappeningsImage1.jpg" },
-  { id: 2, url: "/HappeningsImage2.jpeg" },
   { id: 3, url: "/gallery/industrial-visit1.jpg" },
   { id: 4, url: "/SarojTimesMagazine.JPEG" },
   { id: 5, url: "/gallery/Lead-Green-Campus-Drive1.jpeg" },

@@ -85,8 +85,7 @@ const navLinks = [
       { title: "Admission Process", href: "/admission/admission-process" },
       { title: "Eligibility Criteria", href: "/admission/eligibility" },
       { title: "Fee Structure", href: "/admission/fees-structure" },
-      { title: "Management Admission Quota",href: "/pdfs/ManagementQuotaAdmission.pdf"
-}
+      { title: "Management Admission Quota", href: pdfPath ,}
 
     ],
   },
@@ -893,7 +892,7 @@ export const Header = () => {
                           </div>
                         </motion.li>
 
-                        
+                   
                        {/* Management Quota Admissions */}
                         <motion.li
                           variants={itemVariants}
@@ -1809,29 +1808,38 @@ const MobileNavLink = ({
   href,
   subLinks,
   setActiveSubmenu,
-  toggleMenu,
+  toggleMenu
 }) => {
+  const isPdf = href?.endsWith('.pdf'); // Check if href ends with .pdf
+
   const handleClick = () => {
     if (subLinks && subLinks.length > 0) {
       setActiveSubmenu({ title, subLinks });
+    } else if (isPdf) {
+      // Handle PDF download
+      window.open(href, '_blank');
+      toggleMenu();
     } else {
       toggleMenu();
     }
   };
 
   return (
-    <motion.div variants={mobileLinkVars} className="   uppercase text-black">
+    <motion.div variants={mobileLinkVars} className="uppercase text-black">
       {subLinks && subLinks.length > 0 ? (
         <button onClick={handleClick} className="w-full text-left p-0">
           {title}
         </button>
       ) : (
-        <Link className=" " href={href} onClick={handleClick}>
+        <Link 
+          href={isPdf ? "#" : href}
+          onClick={handleClick}
+          className={isPdf ? "cursor-pointer" : ""}
+        >
           {title}
         </Link>
       )}
     </motion.div>
   );
 };
-
 export default MobileNavLink;
