@@ -49,6 +49,8 @@ import Button from "./Sidebar/Button/Index";
 import styles from "./Sidebar/Menu/style.module.css";
 import Nav from "./Sidebar/Nav";
 
+const pdfPath = "/pdfs/ManagementQuotaAdmission.pdf";
+
 const navLinks = [
   {
     title: "About SEG",
@@ -83,6 +85,7 @@ const navLinks = [
       { title: "Admission Process", href: "/admission/admission-process" },
       { title: "Eligibility Criteria", href: "/admission/eligibility" },
       { title: "Fee Structure", href: "/admission/fees-structure" },
+      { title: "Management Admission Quota", href: "" },
     ],
   },
   {
@@ -887,6 +890,36 @@ export const Header = () => {
                             </Link>
                           </div>
                         </motion.li>
+
+                        {/* Management Quota Admissions */}
+                       {/* Management Quota Admissions */}
+                        <motion.li
+                          variants={itemVariants}
+                          className="group flex items-center gap-6 hover:bg-blue-50 p-3 rounded-md"
+                        >
+                          <div>
+                            <FcDocument className="text-2xl" />
+                          </div>
+                          <div className="flex flex-col gap-2">
+                            {/* PDF download triggered by text click */}
+                            <a
+                              href="/pdfs/ManagementQuotaAdmission.pdf"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              onClick={closeAllDropdowns}
+                              className="flex flex-col gap-2"
+                            >
+                              <h6 className="font-bold group-hover:text-blue-300 text-sm">
+                                Management Admission Quota
+                              </h6>
+                              <p className="text-gray-400 text-sm">
+                                "Apply through our Management Quota for flexible admission and clear fee details."
+                              </p>
+                            </a>
+
+                          </div>
+                        </motion.li>
+
                       </div>
                     </ul>
                   </motion.div>
