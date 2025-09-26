@@ -72,9 +72,9 @@ export default function RootLayout({ children }) {
         <AuthProvider>
           {isAuthRoute ? (
             <>
-              {children}
-              
-              <Toaster />
+          {children}
+           
+          <Toaster />
             </>
           ) : isAdminDashboard ? (
             <ThemeProvider

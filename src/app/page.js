@@ -15,8 +15,8 @@ import CompaniesTieUps from "./components/CompanyTieUps";
 import GoogleAdsScript from "./components/GoogleAdsScript";
 import EmployeeOfTheMonth from "./components/EmployeeOfMonth";
 export const metadata = {
-  title: "Saroj Education Group | Best Engineering and Pharmacy College",
-  description: "Saroj Education Group is one of the best engineering and pharmacy colleges in Lucknow, India. We offer a wide range of undergraduate and postgraduate courses in engineering, pharmacy, management, and applied sciences. Our mission is to provide quality education and foster innovation among students.",
+  title: "Saroj Educational Group | Best Engineering and Pharmacy College",
+  description: "Saroj Educational Group is one of the best engineering and pharmacy colleges in Lucknow, India. We offer a wide range of undergraduate and postgraduate courses in engineering, pharmacy, management, and applied sciences. Our mission is to provide quality education and foster innovation among students.",
 };
 
 const Home = () => {
