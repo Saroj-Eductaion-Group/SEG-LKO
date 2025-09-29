@@ -4,12 +4,14 @@ import { useEffect, useRef, useState } from "react";
 import { motion, useMotionValue, useAnimationFrame } from "framer-motion";
 
 const items = [
-  { id: 1, url: "/HappeningsImage1.jpg" },
+  { id: 1, url: "/eventImg9.jpeg" },
+  { id: 2, url: "/HappeningsImage1.jpg" },
   { id: 3, url: "/gallery/industrial-visit1.jpg" },
-  { id: 4, url: "/SarojTimesMagazine.JPEG" },
-  { id: 5, url: "/gallery/Lead-Green-Campus-Drive1.jpeg" },
-  { id: 5, url: "/gallery/Lead-Green-Campus-Drive4.jpeg" },
+  { id: 4, url: "/eventImg3.jpeg" },
+  { id: 5, url: "/SarojTimesMagazine.JPEG" },
   { id: 6, url: "/gallery/sports-meet-10.jpeg" },
+  
+  
 ];
 
 export default function Happenings() {
