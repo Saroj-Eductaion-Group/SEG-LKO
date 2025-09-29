@@ -156,7 +156,7 @@ export default function CourseLayout({ course }) {
       {/* Back Link */}
       <div className="mb-4 sm:mb-6">
         <Link
-          href="/tcs/tcs-ion"
+          href="/tcs-ion"
           className="inline-flex items-center text-blue-600 hover:text-blue-800 transition-colors text-sm sm:text-base"
         >
           <AiOutlineArrowLeft className="mr-1 sm:mr-2" />
