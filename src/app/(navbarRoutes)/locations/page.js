@@ -57,7 +57,26 @@ const colleges = [
     established: 2009,
     mapsUrl: "https://www.google.com/maps/place/Saroj+College+of+Pharmacy/@26.799279,81.0087936,17z/data=!3m1!4b1!4m6!3m5!1s0x399be31cd400bb67:0x2570747e7fb7d24b!8m2!3d26.799279!4d81.0113685!16s%2Fg%2F11hz9lj3p2?entry=ttu&g_ep=EgoyMDI1MDQxNi4xIKXMDSoASAFQAw%3D%3D",
     description: "Center of excellence in pharmaceutical education with modern labs and research facilities."
-  }
+  },
+  {
+  id: 5,
+  name: "Lucknow Institute of Pharmacy",
+  address: "Chand Sarai, Near Gosaiganj, Sultanpur Road , 20th KM Stone, Lucknow, Uttar Pradesh, India, 226001",
+  programs: ["B.Pharma", "M.Pharma", "D.Pharma"],
+  image: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+  established: 2009,
+  mapsUrl: "https://maps.app.goo.gl/PZoBbQrvwrbBgC2w7",
+  description: "Emerging pharmacy institute in Lucknow offering quality education and practical training in pharmaceutical sciences.",
+  category: "pharma",
+  diplomaCourses: [
+    {
+      name: "Diploma in Pharmacy",
+      duration: "4 Years",
+      seats: 60,
+      fee: "₹4,00,000/year"
+    }
+  ]
+}
 ];
 
 export default function CollegesListPage() {
