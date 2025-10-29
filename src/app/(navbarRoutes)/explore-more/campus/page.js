@@ -6,9 +6,19 @@ const galleryImages = [
 
 // 🏫 Campus Building
 { id: 1, src: '/gallery/building1.jpg', alt: 'Campus Building 1', category: 'campus' },
-{ id: 2, src: '/gallery/building2.jpg', alt: 'Campus Building 2', category: 'campus' },
 { id: 3, src: '/gallery/building3.jpg', alt: 'Campus Building 3', category: 'campus' },
 { id: 4, src: '/gallery/building6.jpg', alt: 'Campus Building 6', category: 'campus' },
+{ id: 5, src: '/gallery/building4.jpg', alt: 'Campus Building 4', category: 'campus' },
+{ id: 6, src: '/gallery/building5.jpg', alt: 'Campus Building 5', category: 'campus' },
+{ id: 7, src: '/gallery/building7.jpg', alt: 'Campus Building 7', category: 'campus' },
+{ id: 9, src: '/gallery/building9.jpg', alt: 'Campus Building 9', category: 'campus' },
+{ id: 10, src: '/gallery/building10.jpg', alt: 'Campus Building 10', category: 'campus' },
+{ id: 11, src: '/gallery/building11.jpg', alt: 'Campus Building 11', category: 'campus' },
+{ id: 12, src: '/gallery/building12.jpg', alt: 'Campus Building 12', category: 'campus' },
+{ id: 13, src: '/gallery/building13.jpg', alt: 'Campus Building 13', category: 'campus' },
+{ id: 14, src: '/gallery/building14.jpg', alt: 'Campus Building 14', category: 'campus' },
+{ id: 15, src: '/gallery/building15.jpg', alt: 'Campus Building 15', category: 'campus' },
+{ id: 16, src: '/gallery/building16.jpg', alt: 'Campus Building 16', category: 'campus' },
  
 ];
 
