@@ -5,6 +5,11 @@ import Image from 'next/image';
 const galleryImages = [
  
   { id: 1, src: '/gallery/transport1.jpg', alt: 'transport' },
+  { id: 2, src: '/gallery/transport2.jpg', alt: 'transport' },
+  { id: 3, src: '/gallery/transport3.jpg', alt: 'transport' },
+  { id: 4, src: '/gallery/transport4.jpg', alt: 'transport' },
+  { id: 5, src: '/gallery/transport5.jpg', alt: 'transport' },
+  { id: 6, src: '/gallery/transport6.jpg', alt: 'transport' },
 ];
 
 
