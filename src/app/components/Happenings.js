@@ -10,8 +10,8 @@ const items = [
   { id: 4, url: "/eventImg3.jpeg" },
   { id: 5, url: "/SarojTimesMagazine.JPEG" },
   { id: 6, url: "/gallery/sports-meet-10.jpeg" },
-  { id: 4, url: "/eventImg10.jpeg" },
-  { id: 4, url: "/eventImg11.jpeg" },
+  { id: 7, url: "/eventImg10.jpeg" },
+  { id: 8, url: "/eventImg11.jpeg" },
   
   
 ];
