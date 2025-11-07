@@ -87,7 +87,8 @@ export default function PlacementSection() {
             </div>
           </div>
         </div>
-        {/* Recuriting partners Slider */}
+
+        {/* Recruiting partners Slider */}
         <div className="py-4">
           <Marquee gradient={true} gradientWidth={10} direction="right">
             {hiringPartners.map((image, index) => (

@@ -1165,7 +1165,7 @@ export const Header = () => {
                               </h6>
                               <p className="text-gray-400 text-sm">
                                 Approved by Pharmacy Council of India (PCI) and
-                                affiliated to AKTU,Lucknow,College Code :
+                                affiliated to AKTU
                               </p>
                             </Link>
                           </div>
@@ -1215,7 +1215,7 @@ export const Header = () => {
                               </h6>
                               <p className="text-gray-400 text-sm">
                                 Approved by AICTE and affiliated to
-                                AKTU,Lucknow,College Code :
+                                AKTU
                               </p>
                             </Link>
                           </div>

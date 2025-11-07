@@ -37,7 +37,7 @@ export default function OurInstitutions() {
               <p className="font-bold text-[#003963] text-lg md:text-xl lg:text-2xl">
                 Saroj College of Law
               </p>
-              <p>College Code:</p>
+              {/* <p>College Code:</p> */}
               <p>Approved by Bar Council of India (BCI) and affiliated to AKTU, Lucknow.</p>
             </div>
             <div className="w-full border border-blue-600" />
@@ -55,9 +55,19 @@ export default function OurInstitutions() {
               <p className="font-bold text-[#003963] text-lg md:text-xl lg:text-2xl">
                 Saroj College of Engineering and Polytechnic
               </p>
-              <p>College Code:</p>
+              {/* <p>College Code:</p> */}
               <p>Approved by AICTE and affiliated to AKTU, Lucknow.</p>
             </div>
+{/* 
+             <div className="w-full border border-blue-600" />
+
+            <div className="pb-2">
+              <p className="font-bold text-[#003963] text-lg md:text-xl lg:text-2xl">
+                Lucknow Institute of Pharmacy
+              </p>
+              <p>College Code:</p>
+              <p>Approved by AICTE, PCI, UPBTE and affiliated to AKTU, Lucknow.</p>
+            </div> */}
           </div>
         </div>
 

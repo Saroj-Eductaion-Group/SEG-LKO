@@ -102,7 +102,7 @@ export default function RootLayout({ children }) {
                 <motion.div key={pathname}>
                   <Provider store={store}>
                     {children}
-                    <PopupForm/>
+                    {/* <PopupForm/> */}
                   </Provider>
                 </motion.div>
               </AnimatePresence>
