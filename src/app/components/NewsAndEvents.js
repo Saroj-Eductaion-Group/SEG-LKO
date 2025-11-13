@@ -135,6 +135,7 @@ export default function NewsAndEvents() {
                   </div>
                 </div>
               </div>
+              
               {/* Sports Meet News */}
               <div className="bg-black p-2 flex flex-col gap-2 rounded-md">
                 {/* Category and Date Div */}
