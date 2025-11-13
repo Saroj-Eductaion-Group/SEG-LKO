@@ -296,6 +296,24 @@ const galleryImages = [
     alt: "Green Campus Drive",
     category: "events",
   },
+  {
+    id: 46,
+    src: "/gallery/eventImg12.jpeg",
+    alt: "Sport Week Event",
+    category: "events",
+  },
+   {
+    id: 47,
+    src: "/gallery/eventImg13.jpeg",
+    alt: "Sport Week Event",
+    category: "events",
+  },
+   {
+    id: 48,
+    src: "/gallery/eventImg14.jpeg",
+    alt: "Sport Week Event",
+    category: "events",
+  },
 ];
 
 const categories = [
