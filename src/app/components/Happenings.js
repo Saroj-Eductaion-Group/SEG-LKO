@@ -12,6 +12,9 @@ const items = [
   { id: 6, url: "/gallery/sports-meet-10.jpeg" },
   { id: 7, url: "/eventImg10.jpeg" },
   { id: 8, url: "/eventImg11.jpeg" },
+  { id: 9, url: "/eventImg12.jpeg" },
+  { id: 10, url: "/eventImg13.jpeg" },
+  { id: 11, url: "/eventImg14.jpeg" },
   
   
 ];
