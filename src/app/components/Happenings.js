@@ -15,6 +15,9 @@ const items = [
   { id: 9, url: "/eventImg12.jpeg" },
   { id: 10, url: "/eventImg13.jpeg" },
   { id: 11, url: "/eventImg14.jpeg" },
+  { id: 12, url: "/eventImg15.jpeg" },
+  { id: 13, url: "/eventImg16.jpeg" },
+
   
   
 ];
