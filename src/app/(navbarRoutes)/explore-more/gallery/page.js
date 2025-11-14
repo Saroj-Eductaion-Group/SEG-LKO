@@ -314,6 +314,19 @@ const galleryImages = [
     alt: "Sport Week Event",
     category: "events",
   },
+  {
+    id: 48,
+    src: "/gallery/eventImg15.jpeg",
+    alt: "Sport Week Event",
+    category: "events",
+  },
+
+  {
+    id: 48,
+    src: "/gallery/eventImg16.jpeg",
+    alt: "Sport Week Event",
+    category: "events",
+  },
 ];
 
 const categories = [
