@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { motion, useMotionValue, useAnimationFrame } from "framer-motion";
 
 const items = [
+  
   { id: 1, url: "/eventImg9.jpeg" },
   { id: 2, url: "/HappeningsImage1.jpg" },
   { id: 3, url: "/gallery/industrial-visit1.jpg" },
@@ -17,7 +18,9 @@ const items = [
   { id: 11, url: "/eventImg14.jpeg" },
   { id: 12, url: "/eventImg15.jpeg" },
   { id: 13, url: "/eventImg16.jpeg" },
-
+  { id: 14, url: "/eventImg17.jpeg" },
+  { id: 15, url: "/eventImg18.jpeg" },
+  { id: 16, url: "/eventImg19.jpeg" },
   
   
 ];
