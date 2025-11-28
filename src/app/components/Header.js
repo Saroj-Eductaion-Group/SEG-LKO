@@ -118,6 +118,7 @@ const navLinks = [
       { title: "Saroj College of Pharmacy", href: "/scp" },
       { title: "Saroj College of Engineering and Polytechnic", href: "/scep" },
       { title: "Lucknow Institute of Pharmacy", href: "/lip" },
+      { title: "Saroj College of Law", href: "/scl" },
     ],
   },
   {
@@ -1216,6 +1217,29 @@ export const Header = () => {
                               <p className="text-gray-400 text-sm">
                                 Approved by AICTE and affiliated to
                                 AKTU
+                              </p>
+                            </Link>
+                          </div>
+                        </motion.li>
+                        {/* Saroj College of Law */}
+                        <motion.li
+                          variants={itemVariants}
+                          className="group flex items-center gap-6 hover:bg-blue-50 p-3 rounded-md"
+                        >
+                          <div>
+                            <HiOutlineBuildingLibrary className="text-5xl" />
+                          </div>
+                          <div className="flex flex-col gap-2">
+                            <Link
+                              href="/scl"
+                              onClick={closeAllDropdowns}
+                              className="flex flex-col gap-2"
+                            >
+                              <h6 className="font-bold group-hover:text-blue-300 text-sm">
+                                Saroj College of Law
+                              </h6>
+                              <p className="text-gray-400 text-sm">
+                                Affiliated to Lucknow University
                               </p>
                             </Link>
                           </div>
