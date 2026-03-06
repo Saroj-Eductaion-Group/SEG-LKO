@@ -19,6 +19,11 @@ import { ThemeProvider } from "@/components/theme-provider";
 import TopHeader from "./components/TopHeader";
 import PopupForm from "./components/NoPaperPopupButton";
 
+export const metadata = {
+  verification: {
+    google: "C8of1rnVVen9rqntxrSKm7_qjP9nDA6rd7BModpYWvE",
+  },
+};
 
 const inter = Inter({ subsets: ["latin"] });
 const lora = Lora({
