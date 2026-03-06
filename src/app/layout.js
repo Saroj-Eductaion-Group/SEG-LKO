@@ -19,7 +19,6 @@ import { ThemeProvider } from "@/components/theme-provider";
 import TopHeader from "./components/TopHeader";
 import PopupForm from "./components/NoPaperPopupButton";
 
-
 const inter = Inter({ subsets: ["latin"] });
 const lora = Lora({
   subsets: ["latin"],
@@ -30,6 +29,7 @@ const lora = Lora({
 export default function RootLayout({ children }) {
   const pathname = usePathname();
   const [isMounted, setIsMounted] = useState(false);
+
   const authRoutes = [
     "/admin",
     "/admin/forget-password",
@@ -50,13 +50,24 @@ export default function RootLayout({ children }) {
     return (
       <html lang="en" suppressHydrationWarning>
         <head>
+          <title>Saroj Educational Group | Best Colleges in Lucknow</title>
+
+          <meta
+            name="description"
+            content="Saroj Educational Group offers B.Tech, MBA, BBA, MCA, Pharmacy and Polytechnic programs in Lucknow."
+          />
+
+          <meta
+            name="google-site-verification"
+            content="C8of1rnVVen9rqntxrSKm7_qjP9nDA6rd7BModpYWvE"
+          />
+
           <link rel="icon" href="/favicon.ico" />
           <link rel="icon" href="/favicon.ico" sizes="32x32" />
           <link rel="icon" href="/favicon.ico" sizes="16x16" />
         </head>
-        <body
-          className={`${lora.variable} ${inter.variable} antialiased`}
-        ></body>
+
+        <body className={`${lora.variable} ${inter.variable} antialiased`}></body>
       </html>
     );
   }
@@ -64,18 +75,29 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <meta name="google-site-verification" content="C8of1rnVVen9rqntxrSKm7_qjP9nDA6rd7BModpYWvE" />
+        <title>Saroj Educational Group | Best Colleges in Lucknow</title>
+
+        <meta
+          name="description"
+          content="Saroj Educational Group offers B.Tech, MBA, BBA, MCA, Pharmacy and Polytechnic programs in Lucknow."
+        />
+
+        <meta
+          name="google-site-verification"
+          content="C8of1rnVVen9rqntxrSKm7_qjP9nDA6rd7BModpYWvE"
+        />
+
         <link rel="icon" href="/favicon.ico" />
         <link rel="icon" href="/favicon.ico" sizes="32x32" />
         <link rel="icon" href="/favicon.ico" sizes="16x16" />
       </head>
+
       <body className={`${lora.variable} ${inter.variable} antialiased`}>
         <AuthProvider>
           {isAuthRoute ? (
             <>
-          {children}
-           
-          <Toaster />
+              {children}
+              <Toaster />
             </>
           ) : isAdminDashboard ? (
             <ThemeProvider
@@ -96,9 +118,11 @@ export default function RootLayout({ children }) {
             <LenisProvider>
               {showHeaderAndFooter && (
                 <>
-                  <TopHeader /> <Header />
+                  <TopHeader />
+                  <Header />
                 </>
               )}
+
               <AnimatePresence mode="wait">
                 <motion.div key={pathname}>
                   <Provider store={store}>
@@ -107,6 +131,7 @@ export default function RootLayout({ children }) {
                   </Provider>
                 </motion.div>
               </AnimatePresence>
+
               {showHeaderAndFooter && <Footer />}
             </LenisProvider>
           )}
