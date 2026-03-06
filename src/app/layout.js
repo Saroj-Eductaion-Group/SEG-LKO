@@ -64,6 +64,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        <meta name="google-site-verification" content="C8of1rnVVen9rqntxrSKm7_qjP9nDA6rd7BModpYWvE" />
         <link rel="icon" href="/favicon.ico" />
         <link rel="icon" href="/favicon.ico" sizes="32x32" />
         <link rel="icon" href="/favicon.ico" sizes="16x16" />
