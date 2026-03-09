@@ -12,6 +12,10 @@
     {
       "source": "/ssitm",
       "destination": "/ssitm/index.html"
+    },
+    {
+      "source": "/((?!ssitm).*)",
+      "destination": "/$1"
     }
   ]
 }
