@@ -52,6 +52,8 @@ export default function RootLayout({ children }) {
         <head>
           <title>Saroj Educational Group | Best Colleges in Lucknow</title>
 
+          <meta name="google-site-verification" content="O9-0vkYDPkEXGmYTBvK7ZdjCec2gzkNbvWU2Q7zZkDA" />
+
           <meta
             name="description"
             content="Saroj Educational Group offers B.Tech, MBA, BBA, MCA, Pharmacy and Polytechnic programs in Lucknow."
