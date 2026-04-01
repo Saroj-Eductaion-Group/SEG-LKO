@@ -59,10 +59,6 @@ export default function RootLayout({ children }) {
             content="Saroj Educational Group offers B.Tech, MBA, BBA, MCA, Pharmacy and Polytechnic programs in Lucknow."
           />
 
-          <meta
-            name="google-site-verification"
-            content="C8of1rnVVen9rqntxrSKm7_qjP9nDA6rd7BModpYWvE"
-          />
 
           <link rel="icon" href="/favicon.ico" />
           <link rel="icon" href="/favicon.ico" sizes="32x32" />
