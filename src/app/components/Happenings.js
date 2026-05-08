@@ -18,7 +18,7 @@ const items = [
   { id: 11, url: "/eventImg14.jpeg" },
   { id: 12, url: "/eventImg15.jpeg" },
   { id: 13, url: "/eventImg16.jpeg" },
-  { id: 14, url: "/eventImg17.jpeg" },
+  { id: 14, url: "gallery/eventImg17.jpeg" },
   { id: 15, url: "/eventImg18.jpeg" },
   { id: 16, url: "/eventImg19.jpeg" },
   

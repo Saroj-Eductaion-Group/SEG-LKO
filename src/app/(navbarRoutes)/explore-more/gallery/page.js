@@ -265,13 +265,7 @@ const galleryImages = [
     alt: "College Transport Bus",
     category: "services",
   },
-
-  {
-    id: 41,
-    src: "/gallery/Lead-Green-Campus-Drive1.jpeg",
-    alt: "Green Campus Drive",
-    category: "events",
-  },
+  
   {
     id: 42,
     src: "/gallery/Lead-Green-Campus-Drive2.jpeg",
@@ -284,13 +278,9 @@ const galleryImages = [
     alt: "Green Campus Drive",
     category: "events",
   },
+
   {
-    id: 44,
-    src: "/gallery/Lead-Green-Campus-Drive4.jpeg",
-    alt: "Green Campus Drive",
-    category: "events",
-  },
-  {
+
     id: 45,
     src: "/gallery/Lead-Green-Campus-Drive5.jpeg",
     alt: "Green Campus Drive",
@@ -303,12 +293,7 @@ const galleryImages = [
     category: "events",
   },
    {
-    id: 47,
-    src: "/gallery/eventImg13.jpeg",
-    alt: "Sport Week Event",
-    category: "events",
-  },
-   {
+
     id: 48,
     src: "/gallery/eventImg14.jpeg",
     alt: "Sport Week Event",
