@@ -39,7 +39,7 @@ export default function page() {
         const rowData = row.original;
         return (
           <a
-            href={`${process.env.NEXT_PUBLIC_BASE_URL}${rowData.image}`}
+            href={rowData.image}
             target="_blank"
             rel="noreferrer"
           >

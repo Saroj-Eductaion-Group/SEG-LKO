@@ -1,20 +1,21 @@
 import { FaTrophy, FaAward } from 'react-icons/fa';
 
 const EmployeeOfTheMonth = () => {
+  const currentMonth = new Date().toLocaleString('en-IN', { month: 'long', year: 'numeric' });
   const winners = [
     {
       name: "Umesh Kumar",
-      image: "/employee/EmployeeOfTheMonth1.jpeg", 
+      image: "/employee/EmployeeOfTheMonth1.jpeg",
       achievement: "Outstanding Performance",
       reward: "Cash Award",
-      year: "June 2025"
+      year: currentMonth
     },
     {
       name: "Manish Kumar",
-      image: "/employee/EmployeeOfTheMonth2.jpeg", 
-           achievement: "Outstanding Performance",
+      image: "/employee/EmployeeOfTheMonth2.jpeg",
+      achievement: "Outstanding Performance",
       reward: "Cash Award",
-      year: "June 2025"
+      year: currentMonth
     }
   ];
 

@@ -3,28 +3,21 @@ import { NextResponse } from "next/server";
 import Notice from "@/models/Notice";
 import { getServerSession } from "next-auth";
 import { authOptions } from "../auth/[...nextauth]/route";
+import { uploadToCloudinary } from "@/lib/cloudinary";
 
 export async function GET(req) {
   try {
     await connectDb();
-    const notice = await Notice.find();
+    const notice = await Notice.find().sort({ createdAt: -1 });
     return NextResponse.json(
-      {
-        success: true,
-        message: "Notice fetched successfully",
-        data: notice,
-      },
-      { status: 200 }
+      { success: true, message: "Notice fetched successfully", data: notice },
+      { status: 200, headers: { "Cache-Control": "no-store" } }
     );
   } catch (error) {
     console.error("Error fetching notice:", error);
-    return NextResponse.json(
-      { success: false, message: "Internal server error" },
-      { status: 500 }
-    );
+    return NextResponse.json({ success: false, message: "Internal server error" }, { status: 500 });
   }
 }
-
 
 export async function POST(req) {
   try {
@@ -42,40 +35,23 @@ export async function POST(req) {
       return NextResponse.json({ error: "Title and image are required" }, { status: 400 });
     }
 
-    // Add file size check (e.g., 5MB limit)
     const buffer = Buffer.from(await image.arrayBuffer());
     if (buffer.length > 5 * 1024 * 1024) {
       return NextResponse.json({ error: "File size exceeds 5MB limit" }, { status: 400 });
     }
 
-    const { uploadToGCP } = await import("@/app/utils/uploadToGCP");
-    const imageUrl = await uploadToGCP(image, "notice", true);
+    const imageUrl = await uploadToCloudinary(image, "seglko/notices");
 
-    const newNotice = await Notice.create({
-      title,
-      image: imageUrl,
-    });
+    const newNotice = await Notice.create({ title, image: imageUrl });
 
     return NextResponse.json(
-      {
-        success: true,
-        message: "Notice created successfully",
-        data: newNotice,
-      },
+      { success: true, message: "Notice created successfully", data: newNotice },
       { status: 201 }
     );
   } catch (error) {
-    console.error("Detailed notice creation error:", {
-      error: error.message,
-      stack: error.stack,
-      timestamp: new Date().toISOString()
-    });
+    console.error("Notice creation error:", error.message);
     return NextResponse.json(
-      {
-        success: false,
-        error: "Failed to create notice",
-        details: error.message,
-      },
+      { success: false, error: "Failed to create notice", details: error.message },
       { status: 500 }
     );
   }

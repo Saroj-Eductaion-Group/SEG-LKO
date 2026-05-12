@@ -4,14 +4,11 @@ import StatCard from "@/components/stats-card";
 import { useEffect, useState } from "react";
 
 export default function Page() {
+  const [stats, setStats] = useState({});
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     document.title = "Seglko Admin - Dashboard";
-  }, []);
-
-  const [stats , setStats] = useState({})
-  const [loading,setLoading] = useState(true)
-
-   useEffect(() => {
     async function fetchStats() {
       try {
         const res = await fetch("/api/admin/count");
@@ -19,34 +16,49 @@ export default function Page() {
         setStats(data);
       } catch (err) {
         console.error("Error fetching stats:", err);
-      }finally{
-        setLoading(false)
+      } finally {
+        setLoading(false);
       }
     }
     fetchStats();
   }, []);
-
 
   return (
     <>
       <AdminHeader heading={"Dashboard"} />
       <div className="flex flex-1 flex-col gap-4 p-4 pt-0">
         <div className="grid auto-rows-min gap-4 md:grid-cols-3">
-          <StatCard   
-          title="Total Contact Enquires"
-          value={stats.totalContacts}
-          loading={loading}
-          linkHref="/admin/view-contact"
+          <StatCard
+            title="Total Contact Enquiries"
+            value={stats.totalContacts}
+            loading={loading}
+            linkHref="/admin/view-contact"
           />
-          <StatCard   
-          title="Total Jobs Posted"
-          value={stats.totaljobs}
-          loading={loading}
-          linkHref="/admin/view-job"
+          <StatCard
+            title="Total Jobs Posted"
+            value={stats.totalJobs}
+            loading={loading}
+            linkHref="/admin/view-job"
           />
-          <div className="aspect-video rounded-xl bg-muted/50" />
+          <StatCard
+            title="Total Notices"
+            value={stats.totalNotices}
+            loading={loading}
+            linkHref="/admin/view-notice"
+          />
+          <StatCard
+            title="Total Placements"
+            value={stats.totalPlacements}
+            loading={loading}
+            linkHref="/admin/view-student-placement"
+          />
+          <StatCard
+            title="Placement Updates"
+            value={stats.totalPlacementUpdates}
+            loading={loading}
+            linkHref="/admin/view-placement-update"
+          />
         </div>
-        <div className="min-h-[100vh] flex-1 rounded-xl bg-muted/50 md:min-h-min" />
       </div>
     </>
   );

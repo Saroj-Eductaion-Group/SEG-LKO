@@ -1,67 +1,72 @@
-// import { NextResponse } from 'next/server';
-// import formidable from 'formidable-serverless';
-// import { Readable } from 'stream';
-// import { uploadToGCS } from '@/lib/uploadToGCS';
-// import JobApplication from '@/models/JobApplication';
-// import dbConnect from '@/lib/dbConnect';
+import connectDb from "@/lib/dbConnect";
+import { NextResponse } from "next/server";
+import JobApplication from "@/models/JobApplication";
+import { getServerSession } from "next-auth";
+import { authOptions } from "../auth/[...nextauth]/route";
+import { uploadToCloudinary } from "@/lib/cloudinary";
 
-// export const config = {
-//   api: {
-//     bodyParser: false,
-//   },
-// };
+export async function GET() {
+  try {
+    await connectDb();
+    const applications = await JobApplication.find().sort({ createdAt: -1 });
+    return NextResponse.json(
+      { success: true, message: "Applications fetched successfully", data: applications },
+      { status: 200 }
+    );
+  } catch (error) {
+    return NextResponse.json({ success: false, message: "Internal server error" }, { status: 500 });
+  }
+}
 
-// async function toNodeReadable(req) {
-//   const buffer = Buffer.from(await req.arrayBuffer());
-//   const stream = Readable.from(buffer);
-//   // Add minimal required properties for formidable to work
-//   stream.headers = Object.fromEntries(req.headers.entries());
-//   stream.method = req.method;
-//   return stream;
-// }
+export async function POST(req) {
+  try {
+    await connectDb();
+    const formData = await req.formData();
 
-// export async function POST(req) {
-//   try {
-//     await dbConnect();
+    const name = formData.get("name");
+    const email = formData.get("email");
+    const phone = formData.get("phone");
+    const profile = formData.get("profile");
+    const qualification = formData.get("qualification");
+    const expected_salary = formData.get("expected_salary");
+    const last_organization = formData.get("last_organization");
+    const last_salary = formData.get("last_salary");
+    const experience = formData.get("experience");
+    const address = formData.get("address");
+    const image = formData.get("image");
+    const resume = formData.get("resume");
 
-//     const stream = await toNodeReadable(req);
+    if (!name || !email || !phone || !qualification || !expected_salary || !last_organization || !last_salary || !experience || !address || !image || !resume) {
+      return NextResponse.json({ error: "All fields are required" }, { status: 400 });
+    }
 
-//     const form = new formidable.IncomingForm({ multiples: false });
+    const imageUrl = await uploadToCloudinary(image, "seglko/job-applications");
+    const resumeUrl = await uploadToCloudinary(resume, "seglko/job-resumes");
 
-//     const { fields, files } = await new Promise((resolve, reject) => {
-//       form.parse(stream, (err, fields, files) => {
-//         if (err) reject(err);
-//         else resolve({ fields, files });
-//       });
-//     });
-//     console.log('Files:', files);
+    const application = await JobApplication.create({
+      profile,
+      name,
+      email,
+      phone,
+      qualification,
+      expected_salary,
+      last_organization,
+      last_salary,
+      experience,
+      address,
+      image: imageUrl,
+      resume: resumeUrl,
+    });
 
-
-//     // normalize files
-//     const imageFile = Array.isArray(files.image) ? files.image[0] : files.image;
-//     const resumeFile = Array.isArray(files.resume) ? files.resume[0] : files.resume;
-
-//     const imageUrl = imageFile ? await uploadToGCS(imageFile) : null;
-//     const resumeUrl = resumeFile ? await uploadToGCS(resumeFile) : null;
-
-//     const application = await JobApplication.create({
-//       job: fields.job,
-//       name: fields.name,
-//       email: fields.email,
-//       phone: fields.phone,
-//       qualification: fields.qualification,
-//       expected_salary: fields.expected_salary,
-//       last_organization: fields.last_organization,
-//       last_salary: fields.last_salary,
-//       experience: fields.experience,
-//       address: fields.address,
-//       image: imageUrl,
-//       resume: resumeUrl,
-//     });
-
-//     return NextResponse.json({ success: true, application }, { status: 201 });
-//   } catch (error) {
-//     console.error('API error:', error);
-//     return NextResponse.json({ error: 'Server error' }, { status: 500 });
-//   }
-// }
+    return NextResponse.json(
+      { success: true, message: "Application submitted successfully", data: application },
+      { status: 201 }
+    );
+  } catch (error) {
+    console.error("Job application error:", error);
+    return NextResponse.json(
+      { success: false, error: "Failed to submit application", details: error.message },
+      { status: 500 }
+    );
+  }
+}

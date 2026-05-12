@@ -16,7 +16,7 @@ export default function CareerPage() {
       setLoading(true);
       setError(null);
       try {
-        const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/job`); 
+        const res = await fetch(`/api/job`);
         if (!res.ok) {
           throw new Error(`Failed to fetch jobs: ${res.status}`);
         }

@@ -2,11 +2,11 @@
 
 import { LoginForm } from "@/components/login-form";
 import Image from "next/image";
-import { useEffect } from "react";
+import { useEffect, Suspense } from "react";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 
-export default function LoginPage() {
+function LoginContent() {
   const { data: session, status } = useSession();
   const router = useRouter();
 
@@ -36,5 +36,13 @@ export default function LoginPage() {
         />
       </div>
     </div>
+  );
+}
+
+export default function LoginPage() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <LoginContent />
+    </Suspense>
   );
 }

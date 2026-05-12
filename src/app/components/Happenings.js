@@ -4,25 +4,23 @@ import { useEffect, useRef, useState } from "react";
 import { motion, useMotionValue, useAnimationFrame } from "framer-motion";
 
 const items = [
-  
-  { id: 1, url: "/eventImg9.jpeg" },
-  { id: 2, url: "/HappeningsImage1.jpg" },
-  { id: 3, url: "/gallery/industrial-visit1.jpg" },
-  { id: 4, url: "/eventImg3.jpeg" },
-  { id: 5, url: "/SarojTimesMagazine.JPEG" },
-  { id: 6, url: "/gallery/sports-meet-10.jpeg" },
-  { id: 7, url: "/eventImg10.jpeg" },
-  { id: 8, url: "/eventImg11.jpeg" },
-  { id: 9, url: "/eventImg12.jpeg" },
-  { id: 10, url: "/eventImg13.jpeg" },
-  { id: 11, url: "/eventImg14.jpeg" },
-  { id: 12, url: "/eventImg15.jpeg" },
-  { id: 13, url: "/eventImg16.jpeg" },
-  { id: 14, url: "gallery/eventImg17.jpeg" },
-  { id: 15, url: "/eventImg18.jpeg" },
-  { id: 16, url: "/eventImg19.jpeg" },
-  
-  
+  { id: 1, url: "/gallery/event-conference-room.jpeg" },
+  { id: 2, url: "/gallery/blackapple-drive2.jpeg" },
+  { id: 3, url: "/gallery/event-placement-drive.jpeg" },
+  { id: 4, url: "/gallery/poster-blackapple.jpeg" },
+  { id: 5, url: "/gallery/poster-infoseek.jpeg" },
+  { id: 6, url: "/gallery/event-photo1.jpeg" },
+  { id: 7, url: "/gallery/event-photo3.jpeg" },
+  { id: 8, url: "/eventImg9.jpeg" },
+  { id: 9, url: "/HappeningsImage1.jpg" },
+  { id: 10, url: "/gallery/industrial-visit1.jpg" },
+  { id: 11, url: "/eventImg3.jpeg" },
+  { id: 12, url: "/SarojTimesMagazine.JPEG" },
+  { id: 13, url: "/gallery/sports-meet-10.jpeg" },
+  { id: 14, url: "/eventImg10.jpeg" },
+  { id: 15, url: "/eventImg11.jpeg" },
+  { id: 16, url: "/eventImg18.jpeg" },
+  { id: 17, url: "/eventImg19.jpeg" },
 ];
 
 export default function Happenings() {

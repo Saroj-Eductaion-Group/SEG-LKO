@@ -194,8 +194,9 @@ export default function AboutSection() {
                     <Image
                       src={images}
                       alt={`About Slider ${index}`}
-                      layout="fill"
-                      objectFit="fill"
+                      fill
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                      className="object-fill"
                       priority={index === 0}
                     />
                   </SwiperSlide>

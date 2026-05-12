@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { MotionPathPlugin } from "gsap/MotionPathPlugin";
 import Image from "next/image";
@@ -9,10 +9,10 @@ import Link from "next/link";
 
 export default function PlacementSection() {
   const planeRef = useRef(null);
+  const [placements, setPlacements] = useState([]);
 
   useEffect(() => {
     gsap.registerPlugin(MotionPathPlugin);
-
     gsap.to(planeRef.current, {
       motionPath: {
         path: [
@@ -31,6 +31,23 @@ export default function PlacementSection() {
       duration: 5,
       ease: "power2.out",
     });
+
+    async function fetchPlacements() {
+      try {
+        const res = await fetch("/api/placement");
+        const data = await res.json();
+        if (data.success) {
+          // Sort by newest first, show top 3
+          const sorted = data.data.sort(
+            (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+          );
+          setPlacements(sorted.slice(0, 3));
+        }
+      } catch (err) {
+        console.error("Error fetching placements:", err);
+      }
+    }
+    fetchPlacements();
   }, []);
 
   const hiringPartners = [
@@ -48,16 +65,15 @@ export default function PlacementSection() {
   ];
 
   return (
-    <div className="relative w-full ">
+    <div className="relative w-full">
       <div
         style={{
           backgroundImage: `url(/ourRecruitersBg1.png)`,
           backgroundSize: "cover",
           backgroundPosition: "top",
         }}
-        className=""
       >
-        <div className="ourRecuriters relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ">
+        <div className="ourRecuriters relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h1
             className="text-3xl sm:text-4xl md:text-5xl py-7"
             style={{
@@ -67,28 +83,17 @@ export default function PlacementSection() {
           >
             Placement & Hiring Partners
           </h1>
-
-          {/* Paper Plane Animation */}
           <div className="w-full h-auto lg:flex hidden">
             <div
               ref={planeRef}
               className="absolute left-0 top-1"
-              style={{
-                width: "60px",
-                height: "60px",
-              }}
+              style={{ width: "60px", height: "60px" }}
             >
-              <Image
-                src="/paper-plane.png"
-                alt="Paper Plane"
-                width={40}
-                height={40}
-              />
+              <Image src="/paper-plane.png" alt="Paper Plane" width={40} height={40} />
             </div>
           </div>
         </div>
 
-        {/* Recruiting partners Slider */}
         <div className="py-4">
           <Marquee gradient={true} gradientWidth={10} direction="right">
             {hiringPartners.map((image, index) => (
@@ -105,17 +110,15 @@ export default function PlacementSection() {
         </div>
       </div>
 
-      {/* Recent Placements background */}
       <div
-        className=" w-full "
+        className="w-full"
         style={{
           backgroundImage: `url(/BG1.svg)`,
           backgroundPosition: "center",
           backgroundSize: "cover",
         }}
       >
-        {/* Recent Placements  */}
-        <div className="max-w-7xl mx-auto py-8  px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
           <h1
             className="text-4xl sm:text-5xl md:text-6xl py-4"
             style={{
@@ -126,189 +129,54 @@ export default function PlacementSection() {
             Recent Placements
           </h1>
 
-          {/* Recent Placements Images and Companies Places  */}
-          <div className="w-full flex flex-col lg:flex-row gap-4">
-            {/* Left Section */}
-            <div className="left w-full lg:w-4/6 flex flex-col gap-6">
-              {/* First Student Placed */}
-              <div className="leftbox w-full border flex flex-col md:flex-row">
-                {/* Image */}
-                <div className="image w-full md:w-2/5 h-72 md:h-auto relative overflow-hidden">
-                  <Image
-                    src="/FirstStudentPlaced.jpeg"
-                    alt="Student placed image1"
-                    className="object-cover"
-                   fill
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {placements.map((placement) => (
+              <div
+                key={placement._id}
+                className="bg-yellow-300 shadow-xl drop-shadow-lg overflow-hidden"
+              >
+                <div className="relative w-full aspect-square overflow-hidden bg-white">
+                  <img
+                    src={placement.image}
+                    alt={`${placement.name} placement`}
+                    className="object-cover w-full h-full"
                   />
                 </div>
-
-                {/* Congratulation */}
-                <div className="w-full md:w-3/5 bg-yellow-300 flex flex-col gap-2 shadow-xl drop-shadow-lg p-4">
-                  <h1 className="text-2xl sm:text-3xl">Congratulations!</h1>
-
-                  <div className="content flex flex-col">
-                    <p className="text-xl sm:text-2xl text-blue-500">
-                      Umesh Mishra
-                    </p>
-                    <p className="text-justify text-sm sm:text-base">
-                      We feel immensely proud to announce that our student,
-                      Umesh Mishra, from the B.Tech CSE 4th Year batch, has been
-                      successfully placed at{" "}
-                      <strong className="font-bold text-blue-600">
-                        Square IT Solutions Pvt.Ltd
-                      </strong>{" "}
-                      as a{" "}
-                      <strong className="text-blue-600"> Web Developer!</strong>
+                <div className="flex flex-col gap-3 p-4">
+                  <h2 className="text-2xl sm:text-3xl">Congratulations!</h2>
+                  <div className="flex flex-col gap-1">
+                    <p className="text-xl sm:text-2xl text-blue-600">{placement.name}</p>
+                    <p className="text-sm sm:text-base text-justify">
+                      {placement.name} from {placement.course} secured a campus placement at {placement.company} as {placement.designation}.
                     </p>
                   </div>
-
-                  {/* Company Logo */}
-                  <div className="bg-blue-800 rounded-md flex gap-4 justify-center items-center py-2 px-4">
-                    <h1 className="text-2xl sm:text-3xl md:text-4xl text-white whitespace-nowrap">
-                      10.00LPA
-                    </h1>
-                    <Image
-                      src="/squareit-logo.jpg"
-                      height={50}
-                      width={130}
-                      alt="eclat logo"
-                      className="bg-white p-2 rounded"
-                    />
+                  <div className="bg-blue-800 rounded-md flex flex-col justify-center items-center py-3 px-4">
+                    <p className="text-2xl sm:text-3xl md:text-4xl text-white whitespace-nowrap">
+                      {placement.compensation} LPA
+                    </p>
+                    <p className="text-white text-sm sm:text-base text-center">
+                      {placement.company}
+                    </p>
                   </div>
-
-                  {/* Best Wishes */}
                   <div>
-                    <p> Best Wishes,</p>
-                    <p> Saroj Educational Group</p>
+                    <p>Best Wishes,</p>
+                    <p>Saroj Educational Group</p>
                   </div>
                 </div>
               </div>
-
-              {/* Second Student Placed */}
-              <div className="Secondbox w-full border flex flex-col md:flex-row">
-                {/* Congratulation */}
-                <div className="w-full md:w-3/5 bg-yellow-300 flex flex-col gap-2 shadow-xl drop-shadow-lg p-4">
-                  <h1 className="text-2xl sm:text-3xl">Congratulations!</h1>
-
-                  <div className="content flex flex-col">
-                    <p className="text-xl sm:text-2xl text-blue-500">
-                      Pramudit Shukla
-                    </p>
-                    <p className="text-justify text-sm sm:text-base">
-                      We are proud to announce that our student, Pramudit
-                      Shukla, from{" "}
-                      <span className="font-extrabold">Diploma in CSE,</span>{" "}
-                      has been successfully placed at{" "}
-                      <strong className="text-blue-600">TechMech</strong> as a{" "}
-                      <strong className="text-blue-600">
-                        {" "}
-                        Full Stack Developer!
-                      </strong>
-                    </p>
-                  </div>
-
-                  {/* Company Logo */}
-                  <div className="bg-blue-800 rounded-md flex gap-4 justify-center items-center py-2 px-4">
-                    <h1 className="text-2xl sm:text-3xl md:text-4xl text-white whitespace-nowrap">
-                      12.00LPA
-                    </h1>
-                    <Image
-                      src="/techmech-logo.png"
-                      alt="Techmech logo"
-                      className="bg-white p-2 rounded"
-                      width={120} // Adjusted width
-                      height={40} // Adjusted height
-                    />
-                  </div>
-
-                  {/* Best Wishes */}
-                  <div>
-                    <p> Best Wishes,</p>
-                    <p> Saroj Educational Group</p>
-                  </div>
-                </div>
-                {/* Image */}
-                <div className="image w-full md:w-2/5 h-80  relative overflow-hidden">
-                  <Image
-                    src="/SecondStudentPlaced.jpeg"
-                    alt="Student placed image2"
-                    className="object-cover"
-                   fill
-                  />
-                </div>
-              </div>
-            </div>
-
-            {/* Right Section - Shruti Pandey */}
-            <div className="right w-full lg:w-1/3">
-              {/* Image and Content Container */}
-              <div className="border h-auto flex flex-col md:flex-row lg:flex-col">
-                {/* Image */}
-                <div className="image w-full md:w-2/5 lg:w-full lg:h-96 bg-red-300 h-80  relative overflow-hidden">
-                  <Image
-                    src="/ThirdStudentPlace.jpeg"
-                    alt="Third student image"
-                    className="object-cover"
-                   fill
-                  />
-                </div>
-
-                {/* Congratulation */}
-                <div className="w-full md:w-3/5 lg:w-full bg-yellow-300 flex flex-col gap-2 shadow-xl drop-shadow-lg p-4">
-                  <h1 className="text-2xl sm:text-3xl">Congratulations!</h1>
-
-                  <div className="content flex flex-col">
-                    <p className="text-xl sm:text-2xl text-blue-500">
-                      Shaloni Devi
-                    </p>
-                    <p className="text-justify text-sm sm:text-base">
-                      We are proud to announce that our student, Shaloni Devi,
-                      from B. Pharma 4th Year, has been successfully placed at{" "}
-                      <strong className="text-blue-600">Max Healthcare</strong>{" "}
-                      as an{" "}
-                      <strong className="text-blue-600"> Executive!</strong>
-                    </p>
-                  </div>
-
-                  {/* Company Logo and LPA */}
-                  <div className="bg-blue-800 rounded-md flex justify-center items-center gap-4 py-2 px-4">
-                    <h1 className="text-2xl sm:text-3xl md:text-4xl text-white whitespace-nowrap">
-                      18.00LPA
-                    </h1>
-                    <Image
-                      src="/maxHealthCare.png"
-                      width={90}
-                      height={90}
-                      alt="Wellsun logo"
-                      className="bg-white p-2 rounded"
-                    />
-                  </div>
-
-                  {/* Best Wishes */}
-                  <div>
-                    <p> Best Wishes,</p>
-                    <p> Saroj Educational Group</p>
-                  </div>
-                </div>
-              </div>
-            </div>
+            ))}
           </div>
 
-          {/* View All Placement Button  */}
           <div className="flex justify-center items-center p-4">
             <Link href="/placements">
               <button
                 className="border-none shadow-xl p-2 rounded-md cursor-pointer flex items-center justify-center group space-x-2"
-                style={{
-                  background: "linear-gradient(145deg, #e6e0da, #ffffff)",
-                }}
+                style={{ background: "linear-gradient(145deg, #e6e0da, #ffffff)" }}
               >
                 <span className="relative text-black uppercase text-sm tracking-widest pb-1 after:content-[''] after:absolute after:w-full after:h-0.5 after:bg-black after:bottom-0 after:left-0 after:scale-x-0 after:origin-bottom-right after:transition-transform after:duration-300 group-hover:after:scale-x-100 group-hover:after:origin-bottom-left">
                   View all Placements
                 </span>
-                <span className="transition-transform duration-300 transform group-hover:translate-x-1">
-                  →
-                </span>
+                <span className="transition-transform duration-300 transform group-hover:translate-x-1">→</span>
               </button>
             </Link>
           </div>

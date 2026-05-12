@@ -113,7 +113,7 @@ export default function JobApplicationForm() {
 
       try {
         const response = await fetch(
-          `${process.env.NEXT_PUBLIC_BASE_URL}/api/job-application`,
+          `/api/job-application`,
           {
             method: "POST",
             body: formDataToSend,

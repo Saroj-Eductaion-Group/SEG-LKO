@@ -15,9 +15,7 @@ export default function StudentNotice() {
   useEffect(() => {
     const fetchNotices = async () => {
       try {
-        const response = await axios.get(
-          `${process.env.NEXT_PUBLIC_BASE_URL}/api/notice`
-        );
+        const response = await axios.get(`/api/notice`);
         const sorted = [...(response.data.data || [])].sort(
           (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
         );

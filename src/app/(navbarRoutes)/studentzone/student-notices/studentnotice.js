@@ -14,9 +14,7 @@ export default function StudentNotice() {
   useEffect(() => {
     const fetchNotices = async () => {
       try {
-        const response = await axios.get(
-          `${process.env.NEXT_PUBLIC_BASE_URL}/api/notice`
-        );
+        const response = await axios.get(`/api/notice`);
         const sorted = [...(response.data.data || [])].sort(
           (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
         );
@@ -46,7 +44,7 @@ export default function StudentNotice() {
   const handleDownload = (imageUrl, title) => {
     const link = document.createElement("a");
     link.href = imageUrl;
-    link.download = `${title.replace(/\s+/g, '_')}.jpg`;
+    link.download = `${title.replace(/\s+/g, "_")}.jpg`;
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -58,13 +56,11 @@ export default function StudentNotice() {
         <img
           src="/StudentNoticeBanner.PNG"
           alt="Student Notice Banner"
-          className="w-full h-full object-fit"
+          className="w-full h-full object-cover"
         />
       </div>
 
-      <div>
-        <NavigationPages />
-      </div>
+      <NavigationPages />
 
       <div className="p-6 bg-gray-50 min-h-screen">
         <h2 className="text-3xl font-bold text-gray-800 mb-6 border-b pb-2">
@@ -75,6 +71,8 @@ export default function StudentNotice() {
           <p className="text-center text-gray-600">Loading notices...</p>
         ) : error ? (
           <p className="text-center text-red-500">{error}</p>
+        ) : notices.length === 0 ? (
+          <p className="text-center text-gray-500 py-10">No notices available at the moment.</p>
         ) : (
           <div className="bg-white rounded-lg shadow-sm overflow-hidden">
             <div className="grid grid-cols-12 bg-gray-100 p-4 font-semibold text-gray-700">
@@ -86,7 +84,10 @@ export default function StudentNotice() {
 
             <div className="divide-y divide-gray-200 max-h-[70vh] overflow-y-auto">
               {notices.map((notice, index) => (
-                <div key={notice._id} className="grid grid-cols-12 p-4 items-center hover:bg-gray-50">
+                <div
+                  key={notice._id}
+                  className="grid grid-cols-12 p-4 items-center hover:bg-gray-50"
+                >
                   <div className="col-span-1 text-gray-500">{index + 1}</div>
                   <div className="col-span-5 font-medium text-gray-800">
                     {notice.title}
@@ -118,7 +119,6 @@ export default function StudentNotice() {
         )}
       </div>
 
-      {/* Modal for viewing notice */}
       {isModalOpen && selectedNotice && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-[5000]">
           <div className="bg-white rounded-lg max-w-4xl w-full max-h-[90vh] overflow-auto">
@@ -129,7 +129,7 @@ export default function StudentNotice() {
                 </h3>
                 <button
                   onClick={() => setIsModalOpen(false)}
-                  className="text-gray-500 hover:text-gray-700"
+                  className="text-gray-500 hover:text-gray-700 text-xl"
                 >
                   ✕
                 </button>

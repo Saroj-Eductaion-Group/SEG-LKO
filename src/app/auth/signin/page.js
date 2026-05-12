@@ -2,9 +2,9 @@
 
 import { LoginForm } from "@/components/login-form";
 import Image from "next/image";
-import { useEffect } from "react";
+import { useEffect, Suspense } from "react";
 
-export default function LoginPage() {
+function LoginContent() {
   useEffect(() => {
     document.title = "Login - Seglko Admin";
   }, []);
@@ -28,5 +28,13 @@ export default function LoginPage() {
         />
       </div>
     </div>
+  );
+}
+
+export default function LoginPage() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <LoginContent />
+    </Suspense>
   );
 }

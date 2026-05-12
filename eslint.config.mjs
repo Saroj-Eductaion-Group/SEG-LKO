@@ -11,15 +11,6 @@ const compat = new FlatCompat({
 
 const eslintConfig = [
   ...compat.extends("next/core-web-vitals"),
-  {
-    parser: "babel-eslint",
-    parserOptions: {
-      ecmaVersion: 2020,
-      sourceType: "module",
-    },
-    rules: {
-    },
-  },
 ];
 
 export default eslintConfig;

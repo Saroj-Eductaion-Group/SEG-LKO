@@ -1,41 +1,42 @@
-import React from "react";
-// import HeroSection from "./components/HeroSection";
+import dynamic from "next/dynamic";
 import AboutSection from "./components/AboutSection";
-import AnimatedArrow from "./components/AnimatedArrow";
-import PlacementSection from "./components/PlacementSection";
-import CoursesOffered from "./components/CoursesOffered";
-import LatestNews from "./components/LatestNews";
-import NewsAndEvents from "./components/NewsAndEvents";
-import Happenings from "./components/Happenings";
-import OurInstitutions from "./components/OurInstitutions";
-import LifeSeg from "./components/LifeSeg";
-import WantMoreDetails from "./components/WantMoreDetails";
-import ChatBot from "./components/Chatbot";
-import CompaniesTieUps from "./components/CompanyTieUps";
 import GoogleAdsScript from "./components/GoogleAdsScript";
-import EmployeeOfTheMonth from "./components/EmployeeOfMonth";
+
+const LatestNews = dynamic(() => import("./components/LatestNews"));
+const CompaniesTieUps = dynamic(() => import("./components/CompanyTieUps"));
+const WantMoreDetails = dynamic(() => import("./components/WantMoreDetails"));
+const PlacementSection = dynamic(() => import("./components/PlacementSection"));
+const CoursesOffered = dynamic(() => import("./components/CoursesOffered"));
+const NewsAndEvents = dynamic(() => import("./components/NewsAndEvents"));
+const EmployeeOfTheMonth = dynamic(() => import("./components/EmployeeOfMonth"));
+const Happenings = dynamic(() => import("./components/Happenings"));
+const OurInstitutions = dynamic(() => import("./components/OurInstitutions"));
+const LifeSeg = dynamic(() => import("./components/LifeSeg"));
+const NoPaperPopupButton = dynamic(() => import("./components/NoPaperPopupButton"));
+
 export const metadata = {
-  title: "Saroj Educational Group | Best Engineering and Pharmacy College",
-  description: "Saroj Educational Group is one of the best engineering and pharmacy colleges in Lucknow, India. We offer a wide range of undergraduate and postgraduate courses in engineering, pharmacy, management, and applied sciences. Our mission is to provide quality education and foster innovation among students.",
+  title: "Saroj Educational Group | Best Engineering & Pharmacy College in Lucknow",
+  description: "Top Engineering & Pharmacy College in Lucknow offering B.Tech, MBA, BBA, MCA, M.Pharma, B.Pharma & Diploma programs. AICTE approved, affiliated to AKTU. Admissions Open 2026-27.",
 };
 
 const Home = () => {
   return (
     <>
-      {/* <ChatBot/> */}
-      <GoogleAdsScript/>
+      <GoogleAdsScript />
+      <NoPaperPopupButton />
       <AboutSection />
       <LatestNews />
-      <CompaniesTieUps/>
-      <WantMoreDetails/>
+      <CompaniesTieUps />
+      <WantMoreDetails />
       <PlacementSection />
       <CoursesOffered />
       <NewsAndEvents />
-      <EmployeeOfTheMonth/>
+      <EmployeeOfTheMonth />
       <Happenings />
       <OurInstitutions />
       <LifeSeg />
     </>
   );
 };
+
 export default Home;
